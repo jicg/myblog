@@ -1,0 +1,108 @@
+{{template "admin/base/head" .}}
+<style type="text/css">
+	/*.panel-heading{padding: 0px 15px;}
+	.panel-heading .table{margin-bottom:0px;border-top: 0px;}*/
+	body{font-family: "Microsoft YaHei",'Open Sans',sans-serif;}
+</style>
+{{if  eq .nav.Id 0 }}
+<div class="panel panel-default">
+	<div class="panel-heading">
+		菜单新增 
+	</div>
+	<div class="panel-body">
+		<form class="form-horizontal" action="/admin/sys/navs/add" method="Post">
+			<input type="hidden" name="id" value="-1" >
+			<div class="form-group">
+				<label for="inputPassword3" class="col-sm-2 control-label">序号</label>
+				<div class="col-sm-10">
+					<input type="number" class="form-control" name="orderno" value="" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputEmail3" class="col-sm-2 control-label">名称</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="name" value="" >
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="inputEmail3" class="col-sm-2 control-label">URL</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="url" value="">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="inputEmail3" name="pid"  class="col-sm-2 control-label">上级目录</label>
+				<div class="col-sm-10">
+					<select class="form-control" name="pid" >
+					  <option value="0">无上级目录</option>
+					  {{range $k,$v := .topnavs}}
+					  <option value="{{$v.Id}}">{{$v.Name}}</option>
+					  {{end}}
+					</select>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-default">保存</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+{{else}}
+<div class="panel panel-default">
+	<div class="panel-heading">
+		菜单编辑
+	</div>
+	<div class="panel-body">
+		<form class="form-horizontal" action="/admin/sys/navs/update/{{.nav.Id}}" method="Post">
+			<input type="hidden" name="id" value="{{.nav.Id}}" >
+			<div class="form-group">
+				<label for="inputPassword3" class="col-sm-2 control-label">序号</label>
+				<div class="col-sm-10">
+					<input type="number" class="form-control" name="orderno" value="{{.nav.Orderno}}" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputEmail3" class="col-sm-2 control-label">名称</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="name" value="{{.nav.Name}}" >
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="inputEmail3" class="col-sm-2 control-label">URL</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="url" value="{{.nav.Url}}">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="inputEmail3" name="pid"  class="col-sm-2 control-label">上级目录</label>
+				<div class="col-sm-10">
+					<select class="form-control" {{if big .chcnt 0}} disabled {{end}} name="pid" >
+					  <option value="0">无上级目录</option>
+					  {{range $k,$v := .topnavs}}
+						  {{if equals $.nav.Pid $v.Id }}
+						  <option selected value="{{$v.Id}}">{{$v.Name}}</option>
+						  {{else}}
+						  <option value="{{$v.Id}}">{{$v.Name}}</option>
+						  {{end}}
+					  {{end}}
+					</select>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-default">保存</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+{{end}}
+{{template "admin/base/floor" .}}

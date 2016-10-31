@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  	<head>
+      <title>{{if notequals .art.Id 0 }}{{ .art.Name }}{{else}}归位的个人博客-知识分享{{end}}</title> 
+      {{template "public/comm/head" .}}
+      <meta name="description" content="{{if notequals .art.Id 0 }}{{ .art.Desc }}{{else}}姬成功个人博客,姬成功个人网站{{end}}"/>
+      {{if notequals .art.ArtType  2}}
+      <script src="/static/js/require.js"></script>
+      <script src="/static/js/config.js"></script>
+      <script type="text/javascript">
+      require(['jquery','bootstrap'],function($,_){});
+      </script>
+      {{end}}   
+	</head>
+  <body>
+    <div class="wap">
+      {{template "public/comm/top" .}}
+      <div class="container body w1010" style="margin-top:20px;">
+			<div class="row">
+				<div class="col-md-9">
+					<div class="row" style="min-height:460px;padding: 0 10px 40px 10px;">
+            {{if equals .cnt 2}}
+            {{if equals .art.ArtType  2}}
+              <div class="editormd-preview-container" style="padding:0;">
+                {{ .art.Content}}
+              </div>
+            {{else}}
+               {{ .art.Content}}
+            {{end}}
+            {{else}}
+              <div class="list-group">
+                {{range $K,$v := .arts}}
+                  <a href="/study/{{$.cateid}}/{{$v.Id}}" class="list-group-item">
+                    <h4 class="list-group-item-heading">{{$v.Name}}</h4>
+                    <p class="list-group-item-text">{{$v.Desc}}</p>
+                  </a>
+                {{end}}
+               
+              </div>
+              {{if big .pagetotal 0}}
+              <style>
+                .pagination{margin:10px 0;}
+              </style>
+              <nav aria-label="Page navigation">
+                  <ul class="pagination pull-right" id="pagination"></ul>
+              </nav>
+              
+              {{end}}
+            {{end}}
+					</div>
+				</div>
+				<div class="col-md-3 hidden-xs hidden-sm">
+		      <div class="list-group">
+		      {{range $k,$v := .cates}}
+					   <a  href="/study/{{$v.Id}}" class="list-group-item {{if equals $.cateid $v.Id }}active{{end}}" >
+					  	{{$v.Name}}
+					   </a>
+					{{end}}
+					</div>
+	      </div>
+			</div>
+      </div>
+      {{template "public/comm/footer"}}
+      {{if equals .cnt 2}}
+            {{if equals .art.ArtType  2}}
+              <link rel="stylesheet" href="/static/lib/editor.md/css/editormd.min.css" >
+              <link rel="stylesheet" href="/static/lib/editor.md/lib/codemirror/codemirror.min.css" >
+              <script src="/static/lib/editor.md/editormd.min.js"></script>
+              <script type="text/javascript" src="/static/lib/editor.md/lib/prettify.min.js"></script>
+              <script type="text/javascript">
+                $(document).ready(function(){
+                  $('.editormd-preview-container pre').addClass("prettyprint linenums");
+                  prettyPrint();
+                });
+              </script>
+            {{end}}
+      {{else}}
+            {{if big .pagetotal 0}}
+            <script src="/static/lib/jquery.twbsPagination.min.js" type="text/javascript"></script>
+            <script type="text/javascript">
+                $(function () {
+                    var cateid = '{{.cateid}}';
+                    window.pagObj = $('#pagination').twbsPagination({
+                        totalPages: {{ .pagetotal }},
+                        visiblePages: 10,
+                        first:'首页',
+                        last:'末页',
+                        prev:'上一页',
+                        next:'下一页',
+                        startPage:{{.page}},
+                        onPageClick: function (event, page) {
+                            //console.info(page + ' (from options)');
+                            //page = 2;
+                        }
+                    }).on('page', function (event, page) {
+                        window.location.href="/study/"+cateid+"/page"+page;
+                    });
+                });
+            </script>
+            {{end}}
+        {{end}}
+	</body>
+</html>

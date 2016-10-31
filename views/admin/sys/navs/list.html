@@ -1,0 +1,70 @@
+{{template "admin/base/head2" .}}
+<link rel="stylesheet" href="/static/lib/treegrid/css/jquery.treegrid.css">
+<style type="text/css">
+	body{font-family: "Microsoft YaHei",'Open Sans',sans-serif;}
+</style>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		菜单管理 
+		<a href="/admin/sys/navs/edit/-1">
+			<span class="pull-right">新增</span>
+		</a>
+	</div>
+	<div class="table-responsive panel-body">
+  		<table class="table table-hover tree">
+  			<thead>
+  				<tr>
+					<th style="width:160px;">名称<i></i></th>
+					<th style="width:80px;">图标<i></i></th>
+					<th>URL<i></i></th>
+					<th style="width:100px;">操作</th>
+				</tr>
+  			</thead>
+  			<tbody>
+  				{{range $k,$v := .navs}}
+				<tr class="treegrid-{{$v.Id}} info">
+					<td>{{$v.Name}}</td>
+					<td>{{$v.Icon}}</td>
+					<td>{{$v.Url}}</td>
+					<td>
+						{{if eq $v.Issys false }}
+						<a  href="/admin/sys/navs/edit/{{$v.Id}}">修改</a>
+						<a href="/admin/sys/navs/del/{{$v.Id}}">删除</a>
+						{{else}}
+						{{end}}
+					</td>
+				</tr>
+				{{range $kk,$vv := $v.Navs}}
+				<tr class="treegrid-parent-{{$v.Id}}">
+					
+					<td>{{$vv.Name}}</td>
+					<!-- &nbsp;&nbsp;&nbsp;&nbsp;└─&nbsp; -->
+					<td>{{$vv.Icon}}</td>
+					<td>{{$vv.Url}}</td>
+					<td>
+						{{if eq $vv.Issys false }}
+						<a href="/admin/sys/navs/edit/{{$vv.Id}}">修改</a>
+						</form>
+						<a href="/admin/sys/navs/del/{{$vv.Id}}">删除</a>
+						{{else}}
+
+						{{end}}
+					</td>
+				</tr>
+				{{end}}
+				{{end}}
+			</tbody>
+		</table>
+  		
+	</div>
+</div>
+<script src="/static/lib/jquery.js"></script>
+<script src="/static/lib/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/static/lib/treegrid/js/jquery.treegrid.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.tree').treegrid();
+    });
+</script>
+{{template "admin/base/floor" .}}

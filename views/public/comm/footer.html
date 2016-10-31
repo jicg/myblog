@@ -1,0 +1,38 @@
+<div class="footer">
+    <footer class="text-muted" role="contentinfo">
+        <div class="container">
+            <p> © Copyright 2016 <span><a href="http://www.hellowcloud.com/">成功的博客</a></span>
+            . All Rights Reserved. Powered by <a href="＃" target="_blank">jicg</a>
+            </p>
+            <p><a href="http://www.miitbeian.gov.cn/" style="text-decoration:none;">苏ICP备16013283号</a></p>
+        </div>
+    </footer>
+</div>
+<script src="/static/lib/jquery.js"></script>
+<script src="/static/lib/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+/*(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();*/
+$(document).ready(function(){
+    var path = window.location.pathname;
+    $lis = $("#header-nav li");
+    $als = $("#header-nav li>a");
+    for(var i =0;i<$lis.length;i++){
+        var href = $als.eq(i).attr("href");
+        if(href.indexOf(path)!=-1 ){
+            $lis.eq(i).addClass("active");
+            break; 
+        }
+    }
+});
+</script>

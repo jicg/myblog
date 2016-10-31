@@ -1,0 +1,9 @@
+<ul class="nav nav-stacked">
+  {{range $k, $v := .MEAN.sidebars}}
+    {{if equals $v.Id $.MEAN.id}}
+      <li><a class="active" href="{{$v.Url}}"><i class="{{$v.Icon}}"></i> {{$v.Name}}</a></li>
+    {{else}}
+      <li><a href="{{$v.Url}}"><i class="{{$v.Icon}}"></i> {{$v.Name}}</a></li>
+    {{end}}
+  {{end}}
+</ul>

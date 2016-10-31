@@ -1,0 +1,80 @@
+{{template "admin/base/head" .}}
+<style type="text/css">
+	body{font-family: "Microsoft YaHei",'Open Sans',sans-serif;}
+</style>
+{{if  equals .cate.Id 0 }}
+<div class="panel panel-default">
+	<div class="panel-heading">
+		目录新增 
+	</div>
+	<div class="panel-body">
+		<form class="form-horizontal" action="/admin/category/add" method="Post">
+			<input type="hidden" name="id" value="-1" >
+			<div class="form-group">
+				<label for="orderno" class="col-sm-2 control-label">序号</label>
+				<div class="col-sm-10">
+					<input type="number" class="form-control" name="orderno" value="" >
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label  class="col-sm-2 control-label">名称</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="name" value="" >
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label  class="col-sm-2 control-label">描述</label>
+				<div class="col-sm-10">
+					<textarea rows="3" class="form-control" name="desc" id ="desc">
+					</textarea>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-default">保存</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+{{else}}
+<div class="panel panel-default">
+	<div class="panel-heading">
+		目录编辑
+	</div>
+	<div class="panel-body">
+		<form class="form-horizontal" action="/admin/category/update/{{.cate.Id}}" method="Post">
+			<input type="hidden" name="id" value="{{.cate.Id}}" >
+			<div class="form-group">
+				<label  class="col-sm-2 control-label">序号</label>
+				<div class="col-sm-10">
+					<input type="number" class="form-control" name="orderno" value="{{.cate.Orderno}}" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label  class="col-sm-2 control-label">名称</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="name" value="{{.cate.Name}}" >
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label  class="col-sm-2 control-label">描述</label>
+				<div class="col-sm-10">
+					<textarea rows="3" class="form-control" name="desc"  id ="desc">{{.cate.Desc}}</textarea>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-default">保存</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+{{end}}
+{{template "admin/base/floor" .}}

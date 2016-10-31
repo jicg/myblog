@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <title>{{.title}}</title>
+  <link rel="shortcut icon" href="/static/img/favicon.ico">
+  <link href="/static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/admin.css" >
+</head>
+<body>
+<div class="wap">
+  <div class="header navbar navbar-inverse navbar-static-top" style="z-index:1001;margin-bottom:0;">
+    {{template "admin/base/navbar" .}}
+  </div>
+  <div class="container-fluid body">
+    <div class="row">
+      <div class="sidebar">
+        <div class="bg"></div>
+        <div class="container-fluid">
+          <div class="row">
+			{{template "admin/base/left_navbar" .}}
+		</div>
+        </div>
+      </div>
+      <div class="content">
+        <div class="container-fluid">

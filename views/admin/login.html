@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  	<head>
+      <title>后台登陆</title>
+      <meta charset="utf-8"/>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	  <meta name="baidu-site-verification" content="kjcVmnqYYc" />
+      <meta name="keywords" content="姬成功,jicg,成功,姬成功个人博客,姬成功个人网站">
+      <meta name="description" content="姬成功个人博客,姬成功个人网站"/>
+      <meta name="viewport" content="width=device-width">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <link rel="shortcut icon" href="/static/img/favicon.ico">
+      <link href="/static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="/static/css/login.css" >
+	</head>
+  <body>
+	<form  id="loginform" action="/user/login" method="post"  >
+		<div class="login">
+			<a href="http://www.hellowcloud.com" class="title"><h2>后台管理</h2></a>
+			<div id="tips2">
+				<div class="hline fl"></div>
+        <!-- 欢迎登陆后台 -->
+				<div class="tiptext fl">用户名：jicg，密码：jicg</div>
+				<div class="hline fr"></div>
+			</div>
+      {{if empty .user }}
+  			<input id="username" name="username" class="inputblock" type="text" placeholder="用户名">
+  			<input id="password" name="password" class="inputblock" type="password" placeholder="密码">
+  			<a href="javascript:;" id="submitbtn">登录</a>
+  			<div id="agreetip" {{if notempty .error }} style="visibility:visible" {{end}}>
+  				<span id="tipicon"></span><span id="tiptext">{{if notempty .error }}{{.error}}{{end}}</span>
+  			</div>
+      {{else}}
+        <div style="padding:20px;text-align:center;">
+          <h4> 你好！{{.user.Name}}，您已登陆。你可以
+            <p></p>
+            <p><a href="/user/logout">退出登陆</a></p>
+            <p>或者</p>
+            <p><a href="/admin">进入首页</a></p>
+          </h4>
+        </div>
+      {{end}}
+		</div>
+	</form>
+    <script src="/static/lib/jquery.js"></script>
+    <script src="/static/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    	$(document).ready(function(){
+    		$("#submitbtn").click(function(e){
+    			var username = $("#username").val();
+    			var password = $("#password").val();
+    			if(!username||!password){
+    				$("#agreetip").attr("style","visibility:visible").find("#tiptext").html("用户名或密码不能为空");
+    				return ;
+    			}
+    			$("#loginform").submit();
+    		});
+    	})
+    	
+    </script>
+  </body>
+</html>

@@ -1,0 +1,123 @@
+body{background-color:#999; }
+.login {
+    position: relative;
+    width: 580px;
+    height: 395px;
+    margin: 0 auto;
+    border-radius: 2px;
+    background-color: #fff;
+    overflow: hidden;
+    zoom: 1;
+    margin-top: 120px;
+    display: block;
+}
+.title{
+    display: block;
+    width: 142px;
+    height: 50px;
+    margin: 0 auto;
+    overflow: hidden;
+    zoom: 1;
+    margin-top: 40px;
+    text-align: center;
+}
+#tips2 {
+    width: 270px;
+    height: 30px;
+    margin: 0 auto;
+    overflow: hidden;
+    zoom: 1;
+    margin-top: 12px;
+}
+.tiptext {
+    width: 170px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: #999999;
+    font-size: 14px;
+}
+.hline {
+    width: 50px;
+    height: 15px;
+    border-bottom: 1px solid #EDEDED;
+    overflow: hidden;
+    zoom: 1;
+}
+.fl {
+    float: left;
+}
+
+#username {
+    margin-top: 30px;
+    background: url(/static/img/login.png) no-repeat 0px -0px;
+}
+/*#username:focus{color: #ccc;}*/
+#password {
+    margin-top: 15px;
+    background: url(/static/img/login.png) no-repeat 0px -102px;
+}
+
+#username:focus {
+    background: url(/static/img/login.png) no-repeat 0px -51px;
+}
+/*#username:focus{color: #ccc;}*/
+#password:focus {
+    background: url(/static/img/login.png) no-repeat 0px -153px;
+}
+
+.inputblock {
+    display: block;
+    width: 268px;
+    height: 38px;
+    border: 1px solid #D7D7D7;
+    margin: 0 auto;
+    color: #666;
+    font-size: 16px;
+    line-height: 38px;
+    text-indent: 40px;
+}
+
+#submitbtn {
+    display: block;
+    width: 270px;
+    height: 40px;
+    line-height: 40px;
+    margin: 0 auto;
+    color: #fff;
+    font-size: 16px;
+    background-color: #3EBB2B;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 15px;
+    border-radius: 2px;
+}
+
+#agreetip {
+    width: 270px;
+    height: 30px;
+    line-height: 30px;
+    margin: 0 auto;
+    margin-top: 8px;
+    overflow: hidden;
+    zoom: 1;
+    visibility: hidden;
+}
+#passwordtext {
+    position: absolute;
+    z-index: 100;
+    left: 196px;
+    top: 229px;
+    color: #cccccc;
+    font-size: 16px;
+    width: 45px;
+    height: 16px;
+    line-height: 16px;
+    display: block;
+    overflow: hidden;
+    zoom: 1;
+}
+#submitbtn:hover{
+    background-color:#21A900;
+    text-decoration:none;
+}

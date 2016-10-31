@@ -1,0 +1,10 @@
+.sidebar{float: left;width: 160px;}
+.sidebar .bg{position: fixed;top: 0;bottom: 0;background: #000;width: 160px;}
+.sidebar ul{border-radius: 0;background: #000;}
+.sidebar .row ul li a{color: #adadad;}
+.sidebar ul li a:hover,.sidebar ul li a.active,.sidebar ul li a:focus{color: #333;background-color: #eee;text-decoration: none;}
+
+.content{margin-left: 160px;margin-top:10px;}
+.footer {border-top: 1px solid #e5e5e5;;padding: 30px;text-align: center;color: #666;font-size: 13px;margin-top: 50px;}
+.footer li {padding: 4px 0;}
+

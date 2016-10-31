@@ -1,0 +1,47 @@
+{{template "admin/base/head" .}}
+<style type="text/css">
+	body{font-family: "Microsoft YaHei",'Open Sans',sans-serif;}
+</style>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		文章管理 
+		<div class=" pull-right">
+		<a style="display: block;float: right;right: 10px;" href="/admin/article/edit/-1">
+			<span class="pull-right">新增</span>
+		</a>
+		<a style="display: block;float: right;margin-right: 20px;" href="/admin/article/edit/-1/2">
+			<span class="pull-right">新增(markdown)</span>
+		</a>
+		</div>
+	</div>
+	<div class="table-responsive panel-body">
+  		<table class="table table-hover">
+  			<thead>
+  				<tr>
+					<th style="min-width:180px;">类别<i></i></th>
+					<th style="min-width:80px;">名称<i></i></th>
+					<th style="min-width:180px;">描述<i></i></th>
+					<th style="min-width:100px;">操作</th>
+				</tr>
+  			</thead>
+  			<tbody>
+  				{{range $k,$v := .arts}}
+				<tr>
+					<td> {{$v.CateName}}
+					</td>
+					<td> {{$v.Name}}
+					</td>
+					<td>{{$v.Desc}}</td>
+					<td>
+						<a  href="/admin/article/edit/{{$v.Id}}">修改</a>
+						<a href="/admin/article/del/{{$v.Id}}">删除</a>
+					</td>
+				</tr>
+				{{end}}
+			</tbody>
+		</table>
+  		
+	</div>
+</div>
+{{template "admin/base/floor" .}}

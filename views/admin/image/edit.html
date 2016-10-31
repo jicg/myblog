@@ -1,0 +1,69 @@
+{{template "admin/base/head" .}}
+<style type="text/css">
+	body{font-family: "Microsoft YaHei",'Open Sans',sans-serif;}
+</style>
+{{if  equals .img.Id 0 }}
+<div class="panel panel-default">
+	<div class="panel-heading">
+		图片新增 
+	</div>
+	<div class="panel-body">
+		<form class="form-horizontal" action="/admin/image/add" method="Post" enctype="multipart/form-data" >
+			<input type="hidden" name="id" value="-1" >
+			<div class="form-group">
+				<label  class="col-sm-2 control-label">名称</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="name" >
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label  class="col-sm-2 control-label">图片上传</label>
+				<div class="col-sm-10">
+					<input type="file" class="form-control" name="imgfile" >
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-default">保存</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+{{else}}
+<div class="panel panel-default">
+	<div class="panel-heading">
+		图片编辑
+	</div>
+	<div class="panel-body">
+		<form class="form-horizontal" action="/admin/image/update/{{.img.Id}}" method="Post" enctype="multipart/form-data" >
+			<input type="hidden" name="id" value="{{.img.Id}}" >
+			<div class="form-group">
+				<label  class="col-sm-2 control-label">名称</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="name" value="{{.img.Name}}" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label  class="col-sm-2 control-label">图片上传</label>
+				<div class="col-sm-10">
+					<input type="file" class="form-control" name="imgfile" >
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-default">保存</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+{{end}}
+<script type="text/javascript">
+	// require(['ckeditor'],function(cke){
+	// 	cke.replace('content')
+	// })
+</script>
+{{template "admin/base/floor" .}}
