@@ -14,6 +14,7 @@ import (
 
 const XORM_LOG_PATH = "./data/log/xorm.log"
 
+//restart: always
 var x *xorm.Engine
 
 type DBinfo struct {
@@ -39,12 +40,12 @@ func (d *DBinfo) loadConfig() {
 	} else {
 		d.Host = host
 
-		port := os.Getenv("BLOG_DB_HOST")
+		port := os.Getenv("BLOG_DB_PORT")
 		if len(port) != 0 {
 			d.Port = port
 		}
 
-		user := os.Getenv("BLOG_DB_PORT")
+		user := os.Getenv("BLOG_DB_USER")
 		if len(user) != 0 {
 			d.User = user
 		}
@@ -68,6 +69,7 @@ func (d *DBinfo) loadConfig() {
 }
 
 func (d *DBinfo) DBUrl() string {
+	fmt.Println(d.User + ":" + d.Pwd + "@tcp(" + d.Host + ":" + d.Port + ")/" + d.DBName + "?charset=utf8")
 	return d.User + ":" + d.Pwd + "@tcp(" + d.Host + ":" + d.Port + ")/" + d.DBName + "?charset=utf8"
 }
 
