@@ -3,13 +3,15 @@ package models
 import (
 	"fmt"
 	"log"
-	"log/syslog"
+	"os"
 
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/go-xorm/core"
 	"github.com/go-xorm/xorm"
 	"github.com/jicg/myblog/modules/setting"
 )
+
+const XORM_LOG_PATH = "./data//log/xorm.log"
 
 var x *xorm.Engine
 
@@ -32,12 +34,21 @@ func init() {
 	x.ShowSQL(true)
 	x.Logger().SetLevel(core.LOG_INFO)
 	//x.Logger().SetLevel(core.LOG_DEBUG)
-	logWriter, err := syslog.New(syslog.LOG_DEBUG, "xorm")
+	//logWriter, err := syslog.New(syslog.LOG_DEBUG, "xorm")
+	os.MkdirAll("./data/log", 0777)
+	f, err := os.Open(XORM_LOG_PATH)
+	if err != nil {
+		f, err = os.Create(XORM_LOG_PATH)
+		if err != nil {
+			log.Println(err.Error())
+			return
+		}
+	}
 	//日志
 	if err != nil {
 		log.Fatalf("Fail to create xorm system logger: %v\n", err)
 	}
-	logger := xorm.NewSimpleLogger(logWriter)
+	logger := xorm.NewSimpleLogger(f)
 	logger.ShowSQL(true)
 	x.SetLogger(logger)
 	//缓存
