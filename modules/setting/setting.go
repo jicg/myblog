@@ -2,6 +2,9 @@ package setting
 
 import (
 	"fmt"
+	"html/template"
+	"strings"
+
 	"github.com/Unknwon/log"
 	"github.com/go-macaron/cache"
 	_ "github.com/go-macaron/cache/ledis"
@@ -10,8 +13,6 @@ import (
 	_ "github.com/go-macaron/session/ledis"
 	"gopkg.in/ini.v1"
 	"gopkg.in/macaron.v1"
-	"html/template"
-	"strings"
 )
 
 const (
@@ -25,6 +26,8 @@ var (
 	HTTPPort int
 	// Global settings.
 	Cfg *ini.File
+
+	IsInstall bool
 )
 
 func init() {

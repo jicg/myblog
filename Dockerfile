@@ -5,6 +5,8 @@ MAINTAINER <284077318@qq.com>
 COPY . $GOPATH/src/myblog
 # The RUN instruction will execute any commands
 # Adding HelloWorld page into Nginx server
+VOLUME data/
+
 WORKDIR $GOPATH/src/myblog
 RUN go get myblog 
 RUN go install -a myblog

@@ -25,5 +25,4 @@ data/*
 *.exe
 *.test
 *.prof
-log
 myblog

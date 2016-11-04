@@ -26,9 +26,9 @@ var (
 //main入口
 func main() {
 	newMacaron()
+
 	m.Group("", indexGroup, home.TempletePathHandel)
 	//m.Run(setting.HTTPPort)
-
 	http.Handle("/", m)
 	http.Handle("/image/", &comm.ImageHandle{})
 	http.ListenAndServe(":"+strconv.Itoa(setting.HTTPPort), nil)
@@ -138,4 +138,9 @@ func adminAnyGroup() {
 		ctx.Data["html"] = "页面构思中。。。。。"
 		ctx.HTML(200, "admin/any")
 	})
+}
+
+func install(ctx *macaron.Context) {
+	ctx.Data["html"] = "安装中。。。。"
+	ctx.HTML(200, "admin/any")
 }
