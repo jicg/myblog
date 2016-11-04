@@ -113,7 +113,7 @@ func adminActicleGroup() {
 	m.Get("/list", admin.ListActicle)
 	m.Get("/edit/:id/?:edittype", admin.EditActicle)
 	m.Post("/add", admin.AddActicle)
-	m.Post("/update/:id", admin.UpdateActicle)
+	m.Post("/update/:id/?:edittype", admin.UpdateActicle)
 	m.Get("/del/:id", admin.DelActicle)
 }
 func adminCategoryGroup() {

@@ -14,7 +14,6 @@ import (
 
 const XORM_LOG_PATH = "./data/log/xorm.log"
 
-//restart: always
 var x *xorm.Engine
 
 type DBinfo struct {
