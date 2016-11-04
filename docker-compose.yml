@@ -1,0 +1,16 @@
+mybog:
+  image: daocloud.io/jicg/myblog:latest
+  net: host
+  privileged: false
+  restart: always
+  ports:
+  - '8080'
+  volumes:
+  - /home/docker/myblog/data:/data
+  environment:
+  - BLOG_DB_DBNAME=myblog
+  - BLOG_DB_HOST=127.0.0.1
+  - BLOG_DB_USER=root
+  - BLOG_DB_PWD=123456
+  - BLOG_DB_PREFIX=jicg_
+  - BLOG_DB_PORT=3306
