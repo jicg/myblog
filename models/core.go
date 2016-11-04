@@ -1,10 +1,11 @@
 package models
 
 import (
-	"app11/modules/setting"
 	"fmt"
 	"log"
 	"os"
+
+	"github.com/jicg/myblog/modules/setting"
 
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/go-xorm/core"
