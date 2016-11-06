@@ -2,12 +2,13 @@ version: 2.0
 test:
 build:
     lite_image:
-        dockerfile_path: Dockerfile
-        build_dir: /
-        cache: true
-    extract:
-        - /go/bin/myblog 
-    package:
-        dockerfile_path: Dockerfile.sec
-        build_dir: /
-        cache: true
+        compile:
+            dockerfile_path: Dockerfile
+            build_dir: /
+            cache: true
+        extract:
+            - /go/bin/myblog 
+        package:
+            dockerfile_path: Dockerfile.sec
+            build_dir: /
+            cache: true
