@@ -1,7 +1,10 @@
 FROM busybox
-ADD go/bin/myblog /usr/bin/myblog
-ADD /
-#VOLUME go/src/myblog/data
+ADD go/bin/myblog /app/myblog 
+ADD go/src/myblog/views /app/views
+ADD go/src/myblog/conf /app/conf
+ADD go/src/myblog/static /app/static
 
+WORKDIR /app
+VOLUME /app/data
 EXPOSE 8080
-CMD /usr/bin/myblog
+CMD myblog
