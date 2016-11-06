@@ -1,0 +1,17 @@
+version: 2.0
+test:
+build:
+    image:
+        dockerfile_path: Dockerfile
+        build_dir: /
+        cache: true
+    extract:
+        - /go/bin/myblog
+        - /go/src/myblog/views
+        - /go/src/myblog/conf
+        - /go/src/myblog/static
+        
+    package:
+        dockerfile_path: Dockerfile.sec
+        build_dir: /
+        cache: true

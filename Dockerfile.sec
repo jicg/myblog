@@ -1,0 +1,5 @@
+FROM busybox
+ADD go/bin/myblog /usr/bin/myblog
+VOLUME go/src/myblog/data
+EXPOSE 8080
+CMD /usr/bin/myblog
