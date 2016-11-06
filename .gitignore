@@ -26,3 +26,4 @@ data/*
 *.test
 *.prof
 myblog
+*.DS_Store
