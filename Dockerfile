@@ -5,11 +5,11 @@ MAINTAINER <284077318@qq.com>
 COPY . $GOPATH/src/myblog
 # The RUN instruction will execute any commands
 # Adding HelloWorld page into Nginx server
-VOLUME $GOPATH/src/myblog/data
 
 WORKDIR $GOPATH/src/myblog
 RUN go get myblog 
 RUN go install -a myblog
+VOLUME $GOPATH/src/myblog/data
 # The EXPOSE instruction informs Docker that the container listens on the specified network ports at runtime
 EXPOSE 8080
 # The CMD instruction provides default execution command for an container

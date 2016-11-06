@@ -8,5 +8,5 @@ CKEDITOR.editorConfig = function( config ) {
 	config.language = 'zh-cn';
 	// config.uiColor = '#AADC6E';
 	config.image_previewText='欢迎使用 个人博客。祝您生活愉快！';
-	config.filebrowserImageUploadUrl= "/image/ckeditor/upload";
+	config.filebrowserImageUploadUrl= "/image/upload/ckeditor";
 };
