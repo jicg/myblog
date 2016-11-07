@@ -7,7 +7,6 @@ ADD go/src/myblog/conf /app/conf
 ADD go/src/myblog/static /app/static
 
 WORKDIR /app
-VOLUME /app/conf
 VOLUME /app/data
 EXPOSE 8080
 CMD myblog

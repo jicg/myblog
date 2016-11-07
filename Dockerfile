@@ -12,4 +12,4 @@ RUN CGO_ENABLED=0 go install -a github.com/jicg/myblog
 
 # EXPOSE 8080
 
-CMD myblog
+# CMD myblog
