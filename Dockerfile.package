@@ -1,6 +1,6 @@
 FROM busybox
 MAINTAINER <284077318@qq.com> 
-ADD go/bin/app /usr/bin/app
+ADD go/bin/myblog /usr/bin/myblog
 #/app/myblog 
 # ADD go/src/myblog/views /app/views
 # ADD go/src/myblog/conf /app/conf
@@ -9,4 +9,4 @@ ADD go/bin/app /usr/bin/app
 # WORKDIR /app
 # VOLUME /app/data
 EXPOSE 8080
-CMD /usr/bin/app
+CMD /usr/bin/myblog

@@ -7,7 +7,7 @@ build:
             build_dir: /
             cache: true
         extract:
-            - /go/bin/myblog
+            - /go/bin/app
             # - /go/src/myblog/conf
             # - /go/src/myblog/static
             # - /go/src/myblog/views

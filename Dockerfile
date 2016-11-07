@@ -8,8 +8,8 @@ WORKDIR $GOPATH/src/myblog
 
 RUN go get myblog 
 
-RUN go install -a app
+RUN go install -a myblog
 
-EXPOSE 8080
+# EXPOSE 8080
 
 CMD myblog
