@@ -8,7 +8,7 @@ WORKDIR $GOPATH/src/github.com/jicg/myblog
 
 RUN go get github.com/jicg/myblog 
 
-RUN go install -a github.com/jicg/myblog
+RUN CGO_ENABLED=0 go install -a github.com/jicg/myblog
 
 # EXPOSE 8080
 
