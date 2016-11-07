@@ -1,12 +1,11 @@
 FROM busybox
 MAINTAINER <284077318@qq.com> 
-ADD go/bin/myblog /app/myblog
+ADD go/bin/myblog /usr/bin/myblog
 #/usr/bin/myblog
 ADD go/src/myblog/views /app/views
 ADD go/src/myblog/conf /app/conf
 ADD go/src/myblog/static /app/static
-
-WORKDIR /app
 VOLUME /app/data
 EXPOSE 8080
-CMD myblog
+WORKDIR /app
+CMD /usr/bin/myblog
