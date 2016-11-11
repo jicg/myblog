@@ -2,11 +2,11 @@ FROM busybox
 MAINTAINER <284077318@qq.com> 
 ADD go/bin/myblog /usr/bin/myblog
 #/usr/bin/myblog
-VOLUME /app/conf
-COPY go/src/github.com/jicg/myblog/conf /app/conf
 ADD go/src/github.com/jicg/myblog/views /app/views
 ADD go/src/github.com/jicg/myblog/static /app/static
+ADD go/src/github.com/jicg/myblog/sys.ini /app/sys.ini
 VOLUME /app/data
+VOLUME /app/conf
 EXPOSE 8080
 WORKDIR /app
 CMD /usr/bin/myblog

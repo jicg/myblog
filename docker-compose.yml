@@ -7,6 +7,7 @@ mybog:
   - '8080'
   volumes:
   - /home/docker/myblog/data:/data
+  - /home/docker/myblog/conf:/conf
   environment:
   - BLOG_DB_DBNAME=myblog
   - BLOG_DB_HOST=127.0.0.1

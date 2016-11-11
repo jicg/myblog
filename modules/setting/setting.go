@@ -5,6 +5,8 @@ import (
 	"html/template"
 	"strings"
 
+	"os"
+
 	"github.com/Unknwon/log"
 	"github.com/go-macaron/cache"
 	_ "github.com/go-macaron/cache/ledis"
@@ -32,8 +34,10 @@ var (
 
 func init() {
 	HTTPPort = 8080
-
-	sources := []interface{}{"conf/app.ini"}
+	if _, err := os.Open("conf/app.ini"); err != nil {
+		os.Create("conf/app.ini")
+	}
+	sources := []interface{}{"sys.ini", "conf/app.ini"}
 	var err error
 	Cfg, err = macaron.SetConfig(sources[0], sources[1:]...)
 	if err != nil {
