@@ -35,7 +35,10 @@ var (
 func init() {
 	HTTPPort = 8080
 	if _, err := os.Open("conf/app.ini"); err != nil {
-		os.Create("conf/app.ini")
+		if _, e := os.Create("conf/app.ini"); e != nil {
+			log.FatalD(4, "Fail to create file: %v", e)
+		}
+
 	}
 	sources := []interface{}{"sys.ini", "conf/app.ini"}
 	var err error

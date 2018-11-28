@@ -69,7 +69,7 @@ func (d *DBinfo) loadConfig() {
 
 func (d *DBinfo) DBUrl() string {
 	fmt.Println(d.User + ":" + d.Pwd + "@tcp(" + d.Host + ":" + d.Port + ")/" + d.DBName + "?charset=utf8")
-	return d.User + ":" + d.Pwd + "@tcp(" + d.Host + ":" + d.Port + ")/" + d.DBName + "?charset=utf8"
+	return d.User + ":" + d.Pwd+ "@tcp(" + d.Host + ":" + d.Port + ")/" + d.DBName + "?charset=utf8"
 }
 
 func init() {

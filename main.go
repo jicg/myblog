@@ -14,9 +14,9 @@ import (
 
 	"net/http"
 
-	"strconv"
-
 	"gopkg.in/macaron.v1"
+	"golang.org/x/crypto/acme/autocert"
+	"crypto/tls"
 )
 
 var (
@@ -29,9 +29,24 @@ func main() {
 
 	m.Group("", indexGroup, home.TempletePathHandel)
 	//m.Run(setting.HTTPPort)
-	http.Handle("/", m)
-	http.Handle("/image/", &comm.ImageHandle{})
-	http.ListenAndServe(":"+strconv.Itoa(setting.HTTPPort), nil)
+	mux := &http.ServeMux{}
+	mux.Handle("/", m)
+	mux.Handle("/image/", &comm.ImageHandle{})
+	certManager := autocert.Manager{
+		Prompt:     autocert.AcceptTOS,
+		Cache:      autocert.DirCache("cert-cache"),
+		// Put your domain here:
+		HostPolicy: autocert.HostWhitelist("www.hellowcloud.com"),
+	}
+	server := &http.Server{
+		Addr: ":443",
+		Handler:mux,
+		TLSConfig: &tls.Config{
+			GetCertificate: certManager.GetCertificate,
+		},
+	}
+	server.ListenAndServeTLS("", "")
+	//http.ListenAndServeTLS(":"+strconv.Itoa(setting.HTTPPort), nil)
 }
 
 //初始化macaron
