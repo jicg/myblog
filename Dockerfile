@@ -16,6 +16,8 @@ COPY --from=0 /go/src/github.com/jicg/myblog/static /app/static
 COPY --from=0 /go/src/github.com/jicg/myblog/sys.ini /app/sys.ini
 VOLUME /app/data
 VOLUME /app/conf
+VOLUME /app/cert-cache
+
 EXPOSE 8080
 WORKDIR /app
 CMD /usr/bin/myblog
