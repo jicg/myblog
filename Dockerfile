@@ -19,5 +19,6 @@ VOLUME /app/conf
 VOLUME /app/cert-cache
 
 EXPOSE 8080
+EXPOSE 8443
 WORKDIR /app
 CMD /usr/bin/myblog
