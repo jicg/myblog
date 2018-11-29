@@ -39,13 +39,14 @@ func main() {
 		HostPolicy: autocert.HostWhitelist("www.hellowcloud.com"),
 	}
 	server := &http.Server{
-		Addr: ":8443",
+		Addr: ":443",
 		Handler:mux,
 		TLSConfig: &tls.Config{
 			GetCertificate: certManager.GetCertificate,
 		},
 	}
-	go http.ListenAndServe(":8080", certManager.HTTPHandler(nil))
+
+	go http.ListenAndServe(":80", certManager.HTTPHandler(nil))
 	server.ListenAndServeTLS("", "")
 	//http.ListenAndServeTLS(":"+strconv.Itoa(setting.HTTPPort), nil)
 }
