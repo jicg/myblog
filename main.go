@@ -15,8 +15,7 @@ import (
 	"net/http"
 
 	"gopkg.in/macaron.v1"
-	"golang.org/x/crypto/acme/autocert"
-	"crypto/tls"
+	//"crypto/tls"
 )
 
 var (
@@ -32,22 +31,22 @@ func main() {
 	mux := &http.ServeMux{}
 	mux.Handle("/", m)
 	mux.Handle("/image/", &comm.ImageHandle{})
-	certManager := autocert.Manager{
-		Prompt:     autocert.AcceptTOS,
-		Cache:      autocert.DirCache("cert-cache"),
-		// Put your domain here:
-		HostPolicy: autocert.HostWhitelist("www.hellowcloud.com"),
-	}
+	//certManager := autocert.Manager{
+	//	Prompt:     autocert.AcceptTOS,
+	//	Cache:      autocert.DirCache("cert-cache"),
+	//	// Put your domain here:
+	//	HostPolicy: autocert.HostWhitelist("www.hellowcloud.com"),
+	//}
 	server := &http.Server{
-		Addr: ":443",
+		Addr: ":80",
 		Handler:mux,
-		TLSConfig: &tls.Config{
-			GetCertificate: certManager.GetCertificate,
-		},
+		//TLSConfig: &tls.Config{
+		//	GetCertificate: certManager.GetCertificate,
+		//},
 	}
 
-	go http.ListenAndServe(":80", certManager.HTTPHandler(nil))
-	server.ListenAndServeTLS("", "")
+	//go http.ListenAndServe(":80", certManager.HTTPHandler(nil))
+	server.ListenAndServe()
 	//http.ListenAndServeTLS(":"+strconv.Itoa(setting.HTTPPort), nil)
 }
 

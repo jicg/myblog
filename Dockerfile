@@ -22,6 +22,6 @@ VOLUME /app/conf
 VOLUME /app/cert-cache
 
 EXPOSE 80
-EXPOSE 443
+#EXPOSE 443
 WORKDIR /app
 ENTRYPOINT ["/app/myblog"]
