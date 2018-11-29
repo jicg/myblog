@@ -24,4 +24,4 @@ VOLUME /app/cert-cache
 EXPOSE 80
 EXPOSE 443
 WORKDIR /app
-CMD /app/myblog
+ENTRYPOINT ["/app/myblog"]
